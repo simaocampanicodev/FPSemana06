@@ -1,9 +1,9 @@
-# FPSemana04
+# FPSemana06
 
 <br>
 <br>
 
->Working with json in python
+>Working with json in python and creating a battle
 
 <br>
 <br>
