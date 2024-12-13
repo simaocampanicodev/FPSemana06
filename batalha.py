@@ -12,6 +12,7 @@ class Personagem:
 
     def __str__(self):
         return f"{self.nome} {self.vida}"
+    
 
 class Guerreiro(Personagem):
     def especial(self, inimigo):
@@ -32,19 +33,20 @@ class Arqueiro(Personagem):
             if inimigo != self:
                 inimigo.vida -= dano_especial
         print(f"{self.nome} usa Chuva de Flechas e Causa {dano_especial} de Dano a Todos os Inimigos!")
+
 def importar_personagens(caminho):
-    with open("personagens.json", "r") as file:
-        dados = json.load(file)
+    with open(caminho, "r") as file:
+        percs = json.load(file)
 
     personagens = []
-    for dado in dados:
-        classe = dado['classe']
+    for perc in percs:
+        classe = perc['classe']
         if classe == 'Guerreiro':
-            personagens.append(Guerreiro(dado['nome'], dado['vida'], dado['ataque']))
+            personagens.append(Guerreiro(perc['nome'], perc['vida'], perc['ataque']))
         elif classe == 'Mago':
-            personagens.append(Mago(dado['nome'], dado['vida'], dado['ataque']))
+            personagens.append(Mago(perc['nome'], perc['vida'], perc['ataque']))
         elif classe == 'Arqueiro':
-            personagens.append(Arqueiro(dado['nome'], dado['vida'], dado['ataque']))
+            personagens.append(Arqueiro(perc['nome'], perc['vida'], perc['ataque']))
 
     return personagens, len(personagens)
 
